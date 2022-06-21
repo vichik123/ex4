@@ -338,7 +338,7 @@ bool badFormatStartTest()
 bool gangTest1(){
     const string tmp_file("gangTest1_test");
     string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter");
-    string deck("Goblin\nGang\nGoblin\nGoblin\nGoblin\nVampire\nDragon\nEndGang\nGoblin\nGoblin\nGoblin\n");
+    string deck("Goblin\nGang\nGoblin\nGoblin\nGoblin\nVampire\nDragon\nEndGang\nGoblin\nGoblin\nGoblin");
     string expectedOutputFilename("tests/gangTest1_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
@@ -347,7 +347,7 @@ bool gangTest1(){
 bool gangTest2(){
     const string tmp_file("gangTest2_test");
     string input("2\nOmerTests Wizardd\nRegev rogoe\nmatamDalf Wizard\nrocky Fighter");
-    string deck("Gang\nDragon\nGoblin\nGoblin\nGoblin\nGoblin\nEndGang\nGoblin\nGoblin\nGoblin\nPitfall\n");
+    string deck("Gang\nDragon\nGoblin\nGoblin\nGoblin\nGoblin\nEndGang\nGoblin\nGoblin\nGoblin\nPitfall");
     string expectedOutputFilename("tests/gangTest2_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
@@ -355,7 +355,7 @@ bool gangTest2(){
 bool gangTest3(){
     const string tmp_file("gangTest3_test");
     string input("2\nOmerTests Wizardd\nRegev rogoe\nOmerTests Wizard\nrocky Fighter");
-    string deck("Gang\nGoblin\nGoblin\nEndGang\nGoblin\nGoblin\nGoblin\nPitfall\nPitfall\n");
+    string deck("Gang\nGoblin\nGoblin\nEndGang\nGoblin\nGoblin\nGoblin\nPitfall\nPitfall");
     string expectedOutputFilename("tests/gangTest3_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }

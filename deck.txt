@@ -1,6 +1,6 @@
 Dragon
-Pitfall
+Well
 Barfight
-Fairy
-Goblin
-Vampire
+Mana
+Gremlin
+Witch

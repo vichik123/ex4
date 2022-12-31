@@ -9,14 +9,14 @@ Please insert the player name and class:
 Start of round 1:
 
 Start of matamDalf's turn: 
-Player matamDalf has defeated Goblin and rose 1 Level!
+Player matamDalf has defeated Gremlin and rose 1 Level!
 Start of rocky's turn: 
-Player rocky has defeated Goblin and rose 1 Level!
+Player rocky has defeated Gremlin and rose 1 Level!
 
 The current ranking of the Team:
 Ranking    Player Name     Level     Force HP    Coins Job
-1          matamDalf       2         5     100   12    Wizard  
-2          rocky           2         5     100   12    Fighter  
+1          matamDalf       2         5     100   12    Healer  
+2          rocky           2         5     100   12    Warrior  
 
 -------------------------------------------
 Start of round 2:
@@ -42,8 +42,8 @@ Safe travels!
 
 The current ranking of the Team:
 Ranking    Player Name     Level     Force HP    Coins Job
-1          matamDalf       2         5     100   7     Wizard  
-2          rocky           2         5     100   7     Fighter  
+1          matamDalf       2         5     100   7     Healer  
+2          rocky           2         5     100   7     Warrior  
 
 -------------------------------------------
 Start of round 3:
@@ -51,23 +51,23 @@ Start of round 3:
 Start of matamDalf's turn: 
 Player matamDalf has been defeated by a Dragon.
 Start of rocky's turn: 
-Player rocky has defeated Goblin and rose 1 Level!
+Player rocky has defeated Gremlin and rose 1 Level!
 
 The current ranking of the Team:
 Ranking    Player Name     Level     Force HP    Coins Job
-1          rocky           3         5     100   9     Fighter  
-2          matamDalf       2         5     0     7     Wizard  
+1          rocky           3         5     100   9     Warrior  
+2          matamDalf       2         5     0     7     Healer  
 
 -------------------------------------------
 Start of round 4:
 
 Start of rocky's turn: 
-Player rocky has defeated Goblin and rose 1 Level!
+Player rocky has defeated Gremlin and rose 1 Level!
 
 The current ranking of the Team:
 Ranking    Player Name     Level     Force HP    Coins Job
-1          rocky           4         5     100   11    Fighter  
-2          matamDalf       2         5     0     7     Wizard  
+1          rocky           4         5     100   11    Warrior  
+2          matamDalf       2         5     0     7     Healer  
 
 -------------------------------------------
 Start of round 5:
@@ -84,8 +84,8 @@ Safe travels!
 
 The current ranking of the Team:
 Ranking    Player Name     Level     Force HP    Coins Job
-1          rocky           4         5     100   11    Fighter  
-2          matamDalf       2         5     0     7     Wizard  
+1          rocky           4         5     100   11    Warrior  
+2          matamDalf       2         5     0     7     Healer  
 
 -------------------------------------------
 Start of round 6:
@@ -102,8 +102,8 @@ Safe travels!
 
 The current ranking of the Team:
 Ranking    Player Name     Level     Force HP    Coins Job
-1          rocky           4         6     100   1     Fighter  
-2          matamDalf       2         5     0     7     Wizard  
+1          rocky           4         6     100   1     Warrior  
+2          matamDalf       2         5     0     7     Healer  
 
 -------------------------------------------
 Start of round 7:
@@ -114,5 +114,5 @@ The Game has ended!!!
 
 The current ranking of the Team:
 Ranking    Player Name     Level     Force HP    Coins Job
-1          rocky           4         6     0     1     Fighter  
-2          matamDalf       2         5     0     7     Wizard  
+1          rocky           4         6     0     1     Warrior  
+2          matamDalf       2         5     0     7     Healer  

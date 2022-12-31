@@ -7,17 +7,17 @@
 #include "Players/Player.h"
 #include "Cards/Card.h"
 #include "Mtmchkin.h"
-#include "Cards/Vampire.h"
+#include "Cards/Witch.h"
 #include "Cards/Barfight.h"
 #include "Cards/Dragon.h"
-#include "Cards/Fairy.h"
-#include "Cards/Goblin.h"
+#include "Cards/Mana.h"
+#include "Cards/Gremlin.h"
 #include "Cards/Merchant.h"
-#include "Cards/Pitfall.h"
+#include "Cards/Well.h"
 #include "Cards/Treasure.h"
-#include "Players/Rogue.h"
-#include "Players/Wizard.h"
-#include "Players/Fighter.h"
+#include "Players/Ninja.h"
+#include "Players/Healer.h"
+#include "Players/Warrior.h"
 #include "Exception.h"
 #include <algorithm>
 #include <sstream>
@@ -123,16 +123,16 @@ bool cardsPrintsTest()
     
     Barfight junta;
     Dragon mushu;
-    Fairy alizaMalek;
-    Goblin goblin;
+    Mana mana;
+    Gremlin gremlin;
     Merchant pizzaHut;
-    Pitfall moedB;
+    Well well;
     Treasure factor;
-    Vampire dracula;
-    cout << junta << std::endl << mushu << std::endl << alizaMalek   
-                    << std::endl << goblin  << std::endl << pizzaHut
-                    << std::endl << moedB  << std::endl << factor
-                    << std::endl << dracula;
+    Witch witch;
+    cout << junta << std::endl << mushu << std::endl << mana   
+                    << std::endl << gremlin  << std::endl << pizzaHut
+                    << std::endl << well  << std::endl << factor
+                    << std::endl << witch;
     return true;
 }
 
@@ -150,14 +150,14 @@ bool playersPrintsTest()
 bool testCard()
 {
     vector<unique_ptr<Card>> cards;
-    cards.push_back(unique_ptr<Card>(new Goblin()));
-    cards.push_back(unique_ptr<Card>(new Vampire()));
+    cards.push_back(unique_ptr<Card>(new Gremlin()));
+    cards.push_back(unique_ptr<Card>(new Witch()));
     cards.push_back(unique_ptr<Card>(new Dragon()));
     cards.push_back(unique_ptr<Card>(new Treasure()));
     cards.push_back(unique_ptr<Card>(new Merchant()));
-    cards.push_back(unique_ptr<Card>(new Fairy()));
+    cards.push_back(unique_ptr<Card>(new Mana()));
     cards.push_back(unique_ptr<Card>(new Barfight()));
-    cards.push_back(unique_ptr<Card>(new Pitfall()));
+    cards.push_back(unique_ptr<Card>(new Well()));
     for(unique_ptr<Card>& card : cards){
         cout << *card;
     }
@@ -187,35 +187,35 @@ bool gameRunTest()
 bool dragonDenTest()
 {
     const string tmp_file("dragonDen_test");
-    string input("2\nJimmy Wizard\nPikachu Fighter");
+    string input("2\nJimmy Healer\nPikachu Warrior");
     string deck("Dragon\nDragon\nDragon\nDragon\nDragon");
     string expectedOutputFilename("tests/dragonDen_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
 
-bool vampireLairTest()
+bool witchLairTest()
 {
-    const string tmp_file("vampireLiar_test");
-    string input("2\nItay Fighter\nPikachu Rogue");
-    string deck("Vampire\nVampire\nVampire\nVampire\nVampire");
-    string expectedOutputFilename("tests/vampireLair_test_expected.txt");
+    const string tmp_file("witchLair_test");
+    string input("2\nItay Warrior\nPikachu Ninja");
+    string deck("Witch\nWitch\nWitch\nWitch\nWitch");
+    string expectedOutputFilename("tests/witchLair_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
 
-bool goblinCaveTest()
+bool gremlinCaveTest()
 {
-    const string tmp_file("goblinCave_test");
-    string input("2\nItay Wizard\nPikachu Rogue");
-    string deck("Goblin\nGoblin\nGoblin\nGoblin\nGoblin");
-    string expectedOutputFilename("tests/goblinCave_test_expected.txt");
+    const string tmp_file("gremlinCave_test");
+    string input("2\nItay Healer\nPikachu Ninja");
+    string deck("Gremlin\nGremlin\nGremlin\nGremlin\nGremlin");
+    string expectedOutputFilename("tests/gremlinCave_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
 
 bool nonMostersTest()
 {
     const string tmp_file("noMonster_test");
-    string input("2\nItay Wizard\nPikachu Rogue");
-    string deck("Fairy\nBarfight\nPitfall\nTreasure\nFairy");
+    string input("2\nItay Healer\nPikachu Ninja");
+    string deck("Mana\nBarfight\nWell\nTreasure\nMana");
     string expectedOutputFilename("tests/noMonster_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
@@ -223,8 +223,8 @@ bool nonMostersTest()
 bool roundLimitTest()
 {
     const string tmp_file("roundLimit_test");
-    string input("2\nmatamDalf Wizard\nrocky Fighter");
-    string deck("Fairy\nFairy\nFairy\nFairy\nFairy");
+    string input("2\nmatamDalf Healer\nrocky Warrior");
+    string deck("Mana\nMana\nMana\nMana\nMana");
     string expectedOutputFilename("tests/roundLimit_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
@@ -232,8 +232,8 @@ bool roundLimitTest()
 bool allTenTest()
 {
     const string tmp_file("allTen_test");
-    string input("2\nmatamDalf Wizard\nrocky Fighter");
-    string deck("Goblin\nGoblin\nGoblin\nGoblin\nGoblin");
+    string input("2\nmatamDalf Healer\nrocky Warrior");
+    string deck("Gremlin\nGremlin\nGremlin\nGremlin\nGremlin");
     string expectedOutputFilename("tests/allTen_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
@@ -241,8 +241,8 @@ bool allTenTest()
 bool badPlayerInputTest()
 {
     const string tmp_file("badPlayerInput_test");
-    string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter");
-    string deck("Goblin\nVampire\nGoblin\nGoblin\nDragon");
+    string input("2\nmatamDalf Healerd\nmatamDalf ninha\nmatamDalf Healer\nrocky Warrior");
+    string deck("Gremlin\nWitch\nGremlin\nGremlin\nDragon");
     string expectedOutputFilename("tests/badPlayerInput_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
@@ -250,13 +250,13 @@ bool badPlayerInputTest()
 bool merchantInputTest()
 {
     const string tmp_file("merchantInput_test");
-    string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter\n"
+    string input("2\nmatamDalf Healerd\nmatamDalf rogoe\nmatamDalf Healer\nrocky Warrior\n"
                  "1\n"
                  "1\n"
                  "0\n"
                  "2\n"
                  "0\n");
-    string deck("Goblin\nGoblin\nMerchant\nMerchant\nDragon");
+    string deck("Gremlin\nGremlin\nMerchant\nMerchant\nDragon");
     string expectedOutputFilename("tests/merchantInput_test_expected.txt");
     return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
 }
@@ -267,8 +267,8 @@ bool merchantInputTest()
 bool badSizeTest()
 {
     const string tmp_file("badSize_test");
-    string input("4\nBarbieGirl Wizard\nInABarbieWorld Rogue\nMadeOfPlastic Rogue\nITSFANTASTIC Wizard");
-    string deck("Fairy");
+    string input("4\nBarbieGirl Healer\nInABarbieWorld Ninja\nMadeOfPlastic Ninja\nITSFANTASTIC Healer");
+    string deck("Mana");
     string expectedOutputFilename("notneeded.txt");
 	bool flag= false;
     try{
@@ -283,7 +283,7 @@ bool badSizeTest()
 bool noFileTest()
 {
     const string tmp_file("noFile_test");
-    string input("2\nItay Wizard\nPikachu Rogue");
+    string input("2\nItay Healer\nPikachu Ninja");
     string expectedOutputFilename("notneeded.txt");
     string deck("This_is_not_the_file_your_looking_for");
     bool flag = false;
@@ -299,8 +299,8 @@ bool noFileTest()
 bool badFormatTest()
 {
     const string tmp_file("badFormat_test");
-    string input("2\nItay Wizard\nPikachu Rogue");
-    string deck("SomeBody Once told me the world is gonna roll me\nVampire\n");
+    string input("2\nItay Healer\nPikachu Ninja");
+    string deck("SomeBody Once told me the world is gonna roll me\nWitch\n");
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
@@ -317,8 +317,8 @@ bool badFormatTest()
 bool badFormatStartTest()
 {
     const string tmp_file("badFormat_test");
-    string input("2\nItay Wizard\nPikachu Rogue");
-    string deck("I aint the sharpest tool in the shed\nVampire");
+    string input("2\nItay Healer\nPikachu Ninja");
+    string deck("I aint the sharpest tool in the shed\nWitch");
     string expectedOutputFilename("notneeded.txt");
     bool flag = false;
     try {
@@ -333,32 +333,6 @@ bool badFormatStartTest()
     return flag;
 }
 
-/* ---------------------------------------------------------------------------------------------- */
-/* --------------------------------        Bonus Tests         ---------------------------------- */
-bool gangTest1(){
-    const string tmp_file("gangTest1_test");
-    string input("2\nmatamDalf Wizardd\nmatamDalf rogoe\nmatamDalf Wizard\nrocky Fighter");
-    string deck("Goblin\nGang\nGoblin\nGoblin\nGoblin\nVampire\nDragon\nEndGang\nGoblin\nGoblin\nGoblin");
-    string expectedOutputFilename("tests/gangTest1_test_expected.txt");
-    return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
-}
-
-
-bool gangTest2(){
-    const string tmp_file("gangTest2_test");
-    string input("2\nOmerTests Wizardd\nRegev rogoe\nmatamDalf Wizard\nrocky Fighter");
-    string deck("Gang\nDragon\nGoblin\nGoblin\nGoblin\nGoblin\nEndGang\nGoblin\nGoblin\nGoblin\nPitfall");
-    string expectedOutputFilename("tests/gangTest2_test_expected.txt");
-    return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
-}
-
-bool gangTest3(){
-    const string tmp_file("gangTest3_test");
-    string input("2\nOmerTests Wizardd\nRegev rogoe\nOmerTests Wizard\nrocky Fighter");
-    string deck("Gang\nGoblin\nGoblin\nEndGang\nGoblin\nGoblin\nGoblin\nPitfall\nPitfall");
-    string expectedOutputFilename("tests/gangTest3_test_expected.txt");
-    return GeneralGameSimulationTest(tmp_file, input, deck, expectedOutputFilename);
-}
 /* ---------------------------------------------------------------------------------------------- */
 // --------------------------------       Main function          ------------------------------
 
@@ -378,8 +352,5 @@ int main(){
     run_test(roundLimitTest,"Round upper limit test");
     run_test(allTenTest,"All reach lvl 10 test");
     run_test(badPlayerInputTest,"Bad player input test");
-    run_test(gangTest1,"Gang Test 1");
-    run_test(gangTest2,"Gang Test 2");
-    run_test(gangTest3,"Gang Test 3");
     return 0;
 }

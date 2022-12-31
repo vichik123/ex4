@@ -87,32 +87,32 @@ void printMonsterDetails(std::ostream &os, int force, int damage, int coins, boo
 /*
  * Prints outcome summary of encountering the BarFight card:
  
- * @param isFighter - Indicates weither the player who encountered this card is a Fighter or not.
+ * @param isWarrior - Indicates weither the player who encountered this card is a Warrior or not.
  * @return
  *      void
  *
  */
-void printBarfightMessage(bool isFighter);
+void printBarfightMessage(bool isWarrior);
 
 /*
- * Prints outcome summary of encountering the Fairy card:
+ * Prints outcome summary of encountering the Mana card:
  
- * @param isWizard - Indicates weither the player who encountered this card is a Wizard or not.
+ * @param isHealer - Indicates weither the player who encountered this card is a Healer or not.
  * @return
  *      void
  *
  */
-void printFairyMessage(bool isWizard);
+void printManaMessage(bool isHealer);
 
 /*
- * Prints outcome summary of encountering the PitFall card:
+ * Prints outcome summary of encountering the Well card:
  
- * @param isRogue - Indicates weither the player who encountered this card is a Rogue or not.
+ * @param isNinja - Indicates weither the player who encountered this card is a Ninja or not.
  * @return
  *      void
  *
  */
-void printPitfallMessage(bool isRogue);
+void printWellMessage(bool isNinja);
 
 /*
  * Prints outcome summary of encountering the Treasure card:

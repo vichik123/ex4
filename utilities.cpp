@@ -78,9 +78,9 @@ void printMonsterDetails(ostream &os, int force, int damage, int coins, bool isD
 }
 
 
-void printBarfightMessage(bool isFighter)
+void printBarfightMessage(bool isWarrior)
 {
-    if(isFighter){
+    if(isWarrior){
         cout << "You've won the scuffle without losing any health points." << endl;
     }
     else{
@@ -88,19 +88,19 @@ void printBarfightMessage(bool isFighter)
     }
 }
 
-void printFairyMessage(bool isWizard)
+void printManaMessage(bool isHealer)
 {
-    if(isWizard){
-        cout << "Fairies like wizards, you've gained 10 health points." << endl;
+    if(isHealer){
+        cout << "Healers know how to use mana, you've gained 10 health points." << endl;
     }
     else{
         cout << "Nothing happened." << endl ;
     }
 }
 
-void printPitfallMessage(bool isRogue)
+void printWellMessage(bool isNinja)
 {
-    if(isRogue){
+    if(isNinja){
         cout << "You saw the trap coming from miles away, you dodged it gracefully." << endl;
     }
     else{

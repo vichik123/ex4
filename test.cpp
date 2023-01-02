@@ -139,9 +139,9 @@ bool cardsPrintsTest()
 bool playersPrintsTest()
 {
     
-    Rogue player1("Itay");
-    Fighter player2("Efrat");
-    Wizard player3("Jimmy");
+    Ninja player1("Itay");
+    Warrior player2("Efrat");
+    Healer player3("Jimmy");
     cout << player1 << std::endl << player2 << std::endl << player3   
                     << std::endl;
     return true;
@@ -342,8 +342,8 @@ int main(){
 	run_test(playersPrintsTest,"playersPrintsTest");
 	run_test(testCard,"Deck creation test");
 	run_test(dragonDenTest,"Dragon Den simulation test");
-	run_test(goblinCaveTest,"Goblin Cave simulation test");
-	run_test(vampireLairTest,"Vampire Lair simulation test");
+	run_test(gremlinCaveTest,"Gremlin Cave simulation test");
+	run_test(witchLairTest,"Witch Lair simulation test");
 	run_test(nonMostersTest,"Non monsters cards simulation test");
 	run_test(badFormatStartTest,"Bad format at start of file exception test");
 	run_test(badFormatTest,"Bad format exception test");

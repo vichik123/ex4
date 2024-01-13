@@ -9,15 +9,7 @@
 
 class Player {
 
-public:
-    enum Class {
-        NINJA,
-        HEALER,
-        WARRIOR
-    };
-
 private:
-    Class playerClass;
     std::string name;
     int level;
     int force;

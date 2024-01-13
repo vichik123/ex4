@@ -12,6 +12,9 @@ protected:
     int force;
     int loot;
     int loss;
+
+public:
+    Card(int force, int loot, int loss);
 };
 
 

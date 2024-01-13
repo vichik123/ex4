@@ -12,5 +12,6 @@ public:
     Gremlin();
 };
 
+Gremlin::Gremlin() : Card(5, 2, 10) {}
 
 #endif //GREMLIN_H

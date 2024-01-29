@@ -6,12 +6,12 @@
 #define WITCH_H
 
 
-class Witch : Card {
+class Witch : BattleCard {
 
 public:
     Witch();
 };
 
-Witch::Witch() : Card(11, 2, 10) {}
+Witch::Witch() : BattleCard(11, 2, 10) {}
 
 #endif //WITCH_H

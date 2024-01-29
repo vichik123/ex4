@@ -5,7 +5,7 @@
 #include <vector>
 #include <memory>
 #include "Players/Player.h"
-#include "Cards/Card.h"
+#include "Cards/BattleCard.h"
 #include "Mtmchkin.h"
 #include "Cards/Witch.h"
 #include "Cards/Barfight.h"
@@ -116,7 +116,7 @@ void run_test(std::function<bool()> test, std::string test_name)
 
 
 /* ---------------------------------------------------------------------------------------------- */
-// --------------------------------       Tests for Card class          ------------------------------
+// --------------------------------       Tests for BattleCard class          ------------------------------
 
 bool cardsPrintsTest()
 {
@@ -149,16 +149,16 @@ bool playersPrintsTest()
 
 bool testCard()
 {
-    vector<unique_ptr<Card>> cards;
-    cards.push_back(unique_ptr<Card>(new Gremlin()));
-    cards.push_back(unique_ptr<Card>(new Witch()));
-    cards.push_back(unique_ptr<Card>(new Dragon()));
-    cards.push_back(unique_ptr<Card>(new Treasure()));
-    cards.push_back(unique_ptr<Card>(new Merchant()));
-    cards.push_back(unique_ptr<Card>(new Mana()));
-    cards.push_back(unique_ptr<Card>(new Barfight()));
-    cards.push_back(unique_ptr<Card>(new Well()));
-    for(unique_ptr<Card>& card : cards){
+    vector<unique_ptr<BattleCard>> cards;
+    cards.push_back(unique_ptr<BattleCard>(new Gremlin()));
+    cards.push_back(unique_ptr<BattleCard>(new Witch()));
+    cards.push_back(unique_ptr<BattleCard>(new Dragon()));
+    cards.push_back(unique_ptr<BattleCard>(new Treasure()));
+    cards.push_back(unique_ptr<BattleCard>(new Merchant()));
+    cards.push_back(unique_ptr<BattleCard>(new Mana()));
+    cards.push_back(unique_ptr<BattleCard>(new Barfight()));
+    cards.push_back(unique_ptr<BattleCard>(new Well()));
+    for(unique_ptr<BattleCard>& card : cards){
         cout << *card;
     }
 	cards.erase(cards.begin(),cards.end());

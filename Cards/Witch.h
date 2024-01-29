@@ -6,12 +6,14 @@
 #define WITCH_H
 
 
-class Witch : public BattleCard {
+#include "EnemyCard.h"
+
+class Witch : public EnemyCard {
 
 public:
     Witch();
 };
 
-Witch::Witch() : BattleCard(11, 2, 10) {}
+Witch::Witch() : EnemyCard("Witch", 11, 2, 10) {}
 
 #endif //WITCH_H

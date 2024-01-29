@@ -6,12 +6,12 @@
 #define GREMLIN_H
 
 
-class Gremlin : public BattleCard {
+class Gremlin : public EnemyCard {
 
 public:
     Gremlin();
 };
 
-Gremlin::Gremlin() : BattleCard(5, 2, 10) {}
+Gremlin::Gremlin() : EnemyCard("Gremlin", 5, 2, 10) {}
 
 #endif //GREMLIN_H

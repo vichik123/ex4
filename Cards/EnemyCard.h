@@ -18,6 +18,10 @@ protected:
 
 public:
     EnemyCard(std::string name, int force, int loot, int loss);
+
+    int getForce() const;
+    int getLoot();
+    int getLoss();
 };
 
 EnemyCard::EnemyCard(std::string name, int force, int loot, int loss) :

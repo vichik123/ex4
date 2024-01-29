@@ -17,7 +17,8 @@ add_library(cards SHARED
         Cards/Mana.h
         Cards/BattleCard.h
         Cards/Merchant.h
-        Cards/BattleCard.cpp)
+        Cards/EnemyCard.cpp
+)
 add_library(players SHARED
         Players/Player.h
         Players/Player.cpp

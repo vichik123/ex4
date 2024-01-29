@@ -7,6 +7,8 @@
 #define PLAYER_H
 #define MAX_HP 100
 
+#include "Cards/EnemyCard.h"
+
 class Player {
 
 protected:
@@ -17,7 +19,6 @@ protected:
     int coins;
 
 public:
-
     explicit Player(std::string  name);
 
     /**
@@ -43,8 +44,16 @@ public:
      */
     virtual int getAttackPower();
 
+    void fight(EnemyCard& card) {
+        if (card.getForce() >= getAttackPower()) {
+            updateHealthPoints(-card.getLoss());
+        } else {
+            updateCoins(card.getLoot());
+        }
+    }
+
     friend std::ostream& operator<<(std::ostream& os, Player const& player) {
-        return os << "I'm a friend of the class, msg=" << player.name;
+        return os << player.name;
     }
 };
 

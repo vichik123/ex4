@@ -7,7 +7,7 @@
 
 #include "BattleCard.h"
 
-class Dragon : BattleCard {
+class Dragon : public BattleCard {
 
 public:
     Dragon();

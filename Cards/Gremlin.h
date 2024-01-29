@@ -6,7 +6,7 @@
 #define GREMLIN_H
 
 
-class Gremlin : BattleCard {
+class Gremlin : public BattleCard {
 
 public:
     Gremlin();

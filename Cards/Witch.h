@@ -6,7 +6,7 @@
 #define WITCH_H
 
 
-class Witch : BattleCard {
+class Witch : public BattleCard {
 
 public:
     Witch();

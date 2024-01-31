@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
 #define MAX_PLAYERS 6
 #define MIN_PLAYERS 2
 
@@ -122,13 +123,39 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
 
 void Mtmchkin::playRound() {
 	printRoundStartMessage();
+	for (const Player& player : this->m_players) {
+		printTurnStartMessage(player.getName());
+		
+		//playing the card
+		//well...
+		//we should just add the conditionals tmrw...
+
+		if (player.getLevel() == 10) {
+			this->m_leaderboards.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
+			this->m_haveWon++;
+		}
+		if (player.getHP() == 0) {
+			this->m_leaderboards.insert(this->m_leaderboard.end() - this->m_haveLost, player);
+			this->m_haveLost++;
+		}
+		if (isGameOver()) {
+			printGameEndMessage();
+			//what now???
+			return;
+		}
+	}
 	this->m_roundCount++;
+}
+
+void insertAtIndex(std::vector<Player>& vec, const Player& player, int index) {
+    vec.insert(vec.begin() + index, player);
+	return;
 }
 
 void Mtmchkin::printLeaderBoard() const {
 	printRoundStartMessage();
 	for (int i = 0; i < this->m_playerCount; i++) {
-		printPlayerLeaderBoard(int_ranking, player)
+		printPlayerLeaderBoard(i + 1, this->m_leaderboard[i]);
 	}
 }
 

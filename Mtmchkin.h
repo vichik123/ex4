@@ -1,6 +1,12 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 
+#include <vector>
+
+enum class GameStatus {
+    Win, Loss, MidGame
+};
+
 class Mtmchkin{
 
 public:
@@ -46,6 +52,15 @@ public:
     *          int - number of rounds played
     */
     int getNumberOfRounds() const;
+private:
+	int m_roundCount = 0;
+	int m_playerCount;
+    vector<Player> m_players;
+	vecotr<Player> m_leaderboard;
+    vector<Card> m_deck;
+    GameStatus m_status;
+	int m_haveWon = 0;
+	int m_haveLost = 0;
 };
 
 

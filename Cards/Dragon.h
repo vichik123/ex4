@@ -5,14 +5,14 @@
 #ifndef DRAGON_H
 #define DRAGON_H
 
-#include "BattleCard.h"
+#include "EnemyCard.h"
 
-class Dragon : BattleCard {
+class Dragon : public EnemyCard {
 
 public:
     Dragon();
 };
 
-Dragon::Dragon() : BattleCard(25, 1000, 100) {}
+Dragon::Dragon() : EnemyCard("Dragon", 25, 1000, 100) {}
 
 #endif //DRAGON_H

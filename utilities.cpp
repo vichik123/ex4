@@ -40,11 +40,11 @@ void printPlayerDetails(ostream &os, const string &name, const string &job, int 
 }
 
 /* ---------------------------------------------------------------------------------------------- */
-// ----------------------------        Print functions for BattleCard class         --------------------------
+// ----------------------------        Print functions for EnemyCard class         --------------------------
 
 void printCardDetails(ostream &os, const string &name)
 {
-    os << "BattleCard Details:" << endl;
+    os << "EnemyCard Details:" << endl;
     os << "Name: " << name << endl;
 }
 

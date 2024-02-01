@@ -2,6 +2,8 @@
 
 #include "Mtmchkin.h"
 #include "utilities.h"
+#include "Players/Player.h"
+#include "Cards/BattleCard.h"
 #include <iostream>
 #include <vector>
 #include <fstream>

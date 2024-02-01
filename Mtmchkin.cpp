@@ -8,7 +8,9 @@
 #include <string>
 #define MAX_PLAYERS 6
 #define MIN_PLAYERS 2
-
+#define MAX_LEVEL 10
+#define ZERO 0
+#define MAX_NAME_LENGTH 15
 
 
 void buildDeck(const std::string &fileName) {
@@ -78,7 +80,7 @@ bool validClass(const std::string& className) {
 }
 
 bool validName(const std::string& name) {
-    if (name.length() > 16) {
+    if (name.length() > MAX_NAME_LENGTH) {
         return false;
     }
     
@@ -121,20 +123,27 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
 	}
 }
 
+void playCard(Player& player) {
+	// card = this->m_deck[0] ~ first card in the deck
+	// std::string cardType = card.printType();
+	// std::string playerType = player.printType(); //not sure if needed
+	// thought process: if (cardType == "Treasure") {
+	//     player.getTreasure(); //differentiating between player types happens automatically
+	// }
+}
+
 void Mtmchkin::playRound() {
 	printRoundStartMessage();
 	for (const Player& player : this->m_players) {
 		printTurnStartMessage(player.getName());
 		
-		//playing the card
-		//well...
-		//we should just add the conditionals tmrw...
+		playCard(player);
 
-		if (player.getLevel() == 10) {
+		if (player.getLevel() == MAX_LEVEL) {
 			this->m_leaderboards.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
 			this->m_haveWon++;
 		}
-		if (player.getHP() == 0) {
+		if (player.getHP() == ZERO) {
 			this->m_leaderboards.insert(this->m_leaderboard.end() - this->m_haveLost, player);
 			this->m_haveLost++;
 		}
@@ -162,7 +171,7 @@ void Mtmchkin::printLeaderBoard() const {
 bool isFinished(const Player &player) {
 	int hp = player.getHP();
 	int level = player.getLevel();
-	if (hp == 0 || level == 10){
+	if (hp == ZERO || level == MAX_LEVEL){
 		return true;
 	}
 	return false;

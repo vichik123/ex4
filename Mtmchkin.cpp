@@ -4,74 +4,90 @@
 #include "utilities.h"
 #include "Players/Player.h"
 #include "Cards/BattleCard.h"
+#include "Cards/Treasure.h"
+#include "Cards/Gremlin.h"
+#include "Cards/Dragon.h"
+#include "Cards/Barfight.h"
+#include "Cards/Mana.h"
+#include "Cards/Merchant.h"
+#include "Cards/Well.h"
+#include "Cards/Witch.h"
+#include "Players/Ninja.h"
+#include "Players/Healer.h"
+#include "Players/Warrior.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <string>
+#include <limits>
+
 #define MAX_PLAYERS 6
 #define MIN_PLAYERS 2
 #define MAX_LEVEL 10
 #define ZERO 0
 #define MAX_NAME_LENGTH 15
 
+void playCard(Player& player);
 
-void buildDeck(const std::string &fileName) {
-
-	std::ifstream file(filename);
+void buildDeck(std::vector<BattleCard>& deck, const std::string& fileName) {
+	std::ifstream file(fileName);
 	
     if (!file.is_open()) {
-        std::cerr << "Error opening file: " << filename << std::endl;
-        return deck;
+        std::cerr << "Error opening file: " << fileName << std::endl;
+        return;
     }
 
     std::string cardName;
 
 	while (std::getline(file, cardName)) {
+        const BattleCard* card;
 		if (cardName == "Barfight") {
-			BattleCard* card = new Barfight();
+			card = new Barfight();
 		} else if (cardName == "Gremlin") {
-			BattleCard* card = new Gremlin();
+			card = new Gremlin();
 		} else if (cardName == "Dragon") {
-			BattleCard* card = new Dragon();
+			card = new Dragon();
 		} else if (cardName == "Mana") {
-			BattleCard* card = new Mana();
+			card = new Mana();
 		} else if (cardName == "Merchant") {
-			BattleCard* card = new Merchant();
+			card = new Merchant();
 		} else if (cardName == "Treasure") {
-			BattleCard* card = new Treasure();
+			card = new Treasure();
 		} else if (cardName == "Well") {
-			BattleCard* card = new Well();
+			card = new Well();
 		} else if (cardName == "Witch") {
-			BattleCard* card = new Witch();
+			card = new Witch();
 		}		
 
-        this->m_deck.push_back(card);
+        deck.insert(deck.begin(), *card);
     }
 }
 
 Player* buildPlayer(const std::string &name, const std::string &className) {
+    Player* player;
 	if (className == "Ninja") {
-		Player* player = new Ninja(name);
+		player = new Ninja(name);
 	} else if (className == "Healer") {
-		Player* player = new Healer(name);
+		player = new Healer(name);
 	} else if (className == "Warrior") {
-		Player* player = new Warrior(name);
+		player = new Warrior(name);
 	}
 	return player;
 }
 
-void getNumberOfPlayers() {
+int getNumberOfPlayers() {
+    int playerCount;
 	printEnterTeamSizeMessage();
-    std::cin >> this->m_playerCount;
-    while (this->m_playerCount < MIN_PLAYERS || this->m_playerCount > MAX_PLAYERS) {
+    std::cin >> playerCount;
+    while (playerCount < MIN_PLAYERS || playerCount > MAX_PLAYERS) {
 		printInvalidTeamSize();
         //lines to clean buffer
 		//std::cin.clear();
         //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		
 		printEnterTeamSizeMessage();
-        std::cin >> this->m_playerCount;
+        std::cin >> playerCount;
     }
+    return playerCount;
 }
 
 bool validClass(const std::string& className) {
@@ -105,8 +121,8 @@ void getPlayer() {
 		if (!validClass(currentClass)){
 			printInvalidClass();
 		}
-		std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//		std::cin.clear();
+//        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		printInsertPlayerMessage();
 		std::cin >> currentName >> currentClass;
 	}
@@ -114,22 +130,24 @@ void getPlayer() {
 }
 
 Mtmchkin::Mtmchkin(const std::string &fileName) {
-	buildDeck(fileName);
+	buildDeck(this->m_deck, fileName);
     printStartGameMessage();
-	getNumberOfPlayers();
+	this->m_playerCount = getNumberOfPlayers();
 	for (int i = 0; i < m_playerCount; i++) {
 		getPlayer();
 	}
 }
 
-void playCard(Player& player) {
-	BattleCard card = this->m_deck[0];
+void playCard(std::vector<BattleCard>& deck, Player& player) {
+	const BattleCard& card = deck.back();
+    deck.pop_back();
+    deck.insert(deck.begin(), card);
 	std::string cardType = card.getName();
 
 	if (cardType == "Treasure") {
-	    //player.getTreasure(card); something like that how do that cards work?
+        player.updateCoins(Treasure::getCoins());
 	} else if (cardType == "Barfight") {
-
+        player.updateHealthPoints(Barfight::lifeLoss());
 	} else if (cardType == "Gremlin") {
 
 	} else if (cardType == "Dragon") {
@@ -138,30 +156,26 @@ void playCard(Player& player) {
 	
 	} else if (cardType == "Merchant") {
 
-	} else if (cardType == "Treasure") {
-
 	} else if (cardType == "Well") {
 
 	} else if (cardType == "Witch") {
-
-	} else if (cardType == "EnemyCard") {
 
 	}
 }
 
 void Mtmchkin::playRound() {
-	printRoundStartMessage();
+	printRoundStartMessage(this->m_roundCount);
 	for (const Player& player : this->m_players) {
 		printTurnStartMessage(player.getName());
 		
-		playCard(player);
+		playCard(this->m_deck, player);
 
 		if (player.getLevel() == MAX_LEVEL) {
-			this->m_leaderboards.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
+			this->m_leaderboard.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
 			this->m_haveWon++;
 		}
 		if (player.getHP() == ZERO) {
-			this->m_leaderboards.insert(this->m_leaderboard.end() - this->m_haveLost, player);
+			this->m_leaderboard.insert(this->m_leaderboard.end() - this->m_haveLost, player);
 			this->m_haveLost++;
 		}
 		if (isGameOver()) {
@@ -179,7 +193,7 @@ void insertAtIndex(std::vector<Player>& vec, const Player& player, int index) {
 }
 
 void Mtmchkin::printLeaderBoard() const {
-	printRoundStartMessage();
+    printLeaderBoardStartMessage();
 	for (int i = 0; i < this->m_playerCount; i++) {
 		printPlayerLeaderBoard(i + 1, this->m_leaderboard[i]);
 	}
@@ -200,10 +214,10 @@ bool Mtmchkin::isGameOver() const {
 			return false;
 		}
 	}
-	return false;
+	return true;
 }
 
 int Mtmchkin::getNumberOfRounds() const {
-    return this->getNumberOfRounds(); 
+    return this->m_roundCount;
 }
 

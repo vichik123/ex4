@@ -13,6 +13,10 @@ class Barfight : public BattleCard {
 
 public:
     Barfight();
+
+    static int lifeLoss() {
+        return -8;
+    }
 };
 
 Barfight::Barfight() : BattleCard("Barfight") {}

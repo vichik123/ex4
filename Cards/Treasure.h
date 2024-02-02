@@ -13,6 +13,10 @@ class Treasure : public BattleCard {
 
 public:
     Treasure();
+
+    static int getCoins() {
+        return 10;
+    }
 };
 
 Treasure::Treasure() : BattleCard("Treasure") {}

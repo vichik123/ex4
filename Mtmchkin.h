@@ -19,8 +19,8 @@ public:
     *      A new instance of Mtmchkin.
     */
     explicit Mtmchkin(const std::string &fileName);
-    
-    /*
+
+/*
     * Play the next Round of the game - according to the instruction in the exercise document.
     *
     * @return
@@ -55,9 +55,9 @@ public:
 private:
 	int m_roundCount = 0;
 	int m_playerCount;
-    vector<Player> m_players;
-	vecotr<Player> m_leaderboard;
-    vector<Card> m_deck;
+    std::vector<Player> m_players;
+	std::vector<Player> m_leaderboard;
+    std::vector<BattleCard> m_deck;
     GameStatus m_status;
 	int m_haveWon = 0;
 	int m_haveLost = 0;

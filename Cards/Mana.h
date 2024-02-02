@@ -13,6 +13,14 @@ class Mana : public BattleCard {
 
 public:
     Mana();
+
+    void applyEffect(Player& player) override {
+        bool isHealer = player.getClass() == "Healer";
+        printManaMessage(isHealer);
+        if (isHealer) {
+            player.updateHealthPoints(10);
+        }
+    }
 };
 
 Mana::Mana() : BattleCard("Mana") {}

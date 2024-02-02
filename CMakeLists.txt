@@ -5,8 +5,13 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_CXX_FLAGS "-Wall -pedantic-errors -Werror -DNDEBUG")
 
-add_library(util SHARED utilities.cpp utilities.h)
-add_library(cards SHARED
+add_executable(ex4 test.cpp
+        Mtmchkin.cpp Mtmchkin.h
+        Players/Player.h
+        Players/Player.cpp
+        Players/Ninja.h
+        Players/Healer.h
+        Players/Warrior.h
         Cards/EnemyCard.h
         Cards/Gremlin.h
         Cards/Witch.h
@@ -19,17 +24,4 @@ add_library(cards SHARED
         Cards/Merchant.h
         Cards/EnemyCard.cpp
         Cards/BattleCard.cpp
-)
-add_library(players SHARED
-        Players/Player.h
-        Players/Player.cpp
-        Players/Ninja.h
-        Players/Healer.h
-        Players/Warrior.h)
-add_library(mtmchkin SHARED
-        Mtmchkin.cpp Mtmchkin.h)
-add_executable(ex4 test.cpp)
-target_link_libraries(ex4 util)
-target_link_libraries(ex4 mtmchkin)
-target_link_libraries(ex4 players)
-target_link_libraries(ex4 cards)
+        utilities.cpp)

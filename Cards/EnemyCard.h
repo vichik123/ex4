@@ -8,6 +8,7 @@
 #include <utility>
 
 #include "BattleCard.h"
+#include "../utilities.h"
 
 class EnemyCard : public BattleCard {
 
@@ -18,6 +19,17 @@ protected:
 
 public:
     EnemyCard(std::string name, int force, int loot, int loss);
+
+    void applyEffect(Player& player) override {
+        printCardDetails(std::cout, this->name);
+        printMonsterDetails(std::cout, force, loss, loot, loot == 1000);
+        printEndOfCardDetails(std::cout);
+        if (player.getAttackPower() >= force) {
+            player.updateCoins(loot);
+        } else {
+            player.updateHealthPoints(-loss);
+        }
+    }
 
     int getForce() const;
     int getLoot() const;

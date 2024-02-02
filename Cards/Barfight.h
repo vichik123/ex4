@@ -14,8 +14,12 @@ class Barfight : public BattleCard {
 public:
     Barfight();
 
-    static int lifeLoss() {
-        return -8;
+    void applyEffect(Player& player) override {
+        bool isWarrior = player.getClass() == "Warrior";
+        printBarfightMessage(isWarrior);
+        if (!isWarrior) {
+            player.updateHealthPoints(-8);
+        }
     }
 };
 

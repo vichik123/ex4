@@ -13,6 +13,14 @@ class Well : public BattleCard {
 
 public:
     Well();
+
+    void applyEffect(Player& player) override {
+        bool isNinja = player.getClass() == "Ninja";
+        printWellMessage(isNinja);
+        if (!isNinja) {
+            player.updateHealthPoints(-10);
+        }
+    }
 };
 
 Well::Well() : BattleCard("Well") {}

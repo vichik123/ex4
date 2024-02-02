@@ -14,8 +14,9 @@ class Treasure : public BattleCard {
 public:
     Treasure();
 
-    static int getCoins() {
-        return 10;
+    void applyEffect(Player& player) override {
+        printTreasureMessage();
+        player.updateCoins(10);
     }
 };
 

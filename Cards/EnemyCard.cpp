@@ -8,10 +8,10 @@ int EnemyCard::getForce() const {
     return force;
 }
 
-int EnemyCard::getLoot() {
+int EnemyCard::getLoot() const {
     return loot;
 }
 
-int EnemyCard::getLoss() {
+int EnemyCard::getLoss() const {
     return loss;
 }

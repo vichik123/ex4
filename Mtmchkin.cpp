@@ -33,8 +33,6 @@ void buildDeck(const std::string &fileName) {
 			BattleCard* card = new Gremlin();
 		} else if (cardName == "Dragon") {
 			BattleCard* card = new Dragon();
-		} else if (cardName == "Gremlin") {
-			BattleCard* card = new Gremlin();
 		} else if (cardName == "Mana") {
 			BattleCard* card = new Mana();
 		} else if (cardName == "Merchant") {
@@ -69,8 +67,8 @@ void getNumberOfPlayers() {
     while (this->m_playerCount < MIN_PLAYERS || this->m_playerCount > MAX_PLAYERS) {
 		printInvalidTeamSize();
         //lines to clean buffer
-		std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		//std::cin.clear();
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		
 		printEnterTeamSizeMessage();
         std::cin >> this->m_playerCount;
@@ -126,12 +124,30 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
 }
 
 void playCard(Player& player) {
-	// card = this->m_deck[0] ~ first card in the deck
-	// std::string cardType = card.printType();
-	// std::string playerType = player.printType(); //not sure if needed
-	// thought process: if (cardType == "Treasure") {
-	//     player.getTreasure(); //differentiating between player types happens automatically
-	// }
+	BattleCard card = this->m_deck[0];
+	std::string cardType = card.getName();
+
+	if (cardType == "Treasure") {
+	    //player.getTreasure(card); something like that how do that cards work?
+	} else if (cardType == "Barfight") {
+
+	} else if (cardType == "Gremlin") {
+
+	} else if (cardType == "Dragon") {
+	
+	} else if (cardType == "Mana") {
+	
+	} else if (cardType == "Merchant") {
+
+	} else if (cardType == "Treasure") {
+
+	} else if (cardType == "Well") {
+
+	} else if (cardType == "Witch") {
+
+	} else if (cardType == "EnemyCard") {
+
+	}
 }
 
 void Mtmchkin::playRound() {

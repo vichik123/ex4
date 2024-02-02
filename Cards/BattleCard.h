@@ -15,6 +15,7 @@ protected:
 public:
     explicit BattleCard(std::string name);
 
+	std::string getName() const;
     friend std::ostream& operator<<(std::ostream& os, BattleCard& card) {
         return os << card.name;
     }

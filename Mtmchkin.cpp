@@ -32,13 +32,13 @@ void buildDeck(std::vector<BattleCard>& deck, const std::string& fileName) {
 	std::ifstream file(fileName);
 	
     if (!file.is_open()) {
-        std::cerr << "Error opening file: " << fileName << std::endl;
-        return;
+		throw DeckFileNotFound();
     }
 
     std::string cardName;
-
+	int lineNumber = 0;
 	while (std::getline(file, cardName)) {
+		lineNumber++;
         const BattleCard* card;
 		if (cardName == "Barfight") {
 			card = new Barfight();
@@ -56,7 +56,9 @@ void buildDeck(std::vector<BattleCard>& deck, const std::string& fileName) {
 			card = new Well();
 		} else if (cardName == "Witch") {
 			card = new Witch();
-		}		
+		} else {
+			throw DeckFileFormatError(lineNumber);
+		}
 
         deck.insert(deck.begin(), *card);
     }
@@ -130,7 +132,13 @@ void getPlayer() {
 }
 
 Mtmchkin::Mtmchkin(const std::string &fileName) {
+	try {
 	buildDeck(this->m_deck, fileName);
+	} catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
+	
     printStartGameMessage();
 	this->m_playerCount = getNumberOfPlayers();
 	for (int i = 0; i < m_playerCount; i++) {

@@ -62,6 +62,11 @@ void buildDeck(std::vector<BattleCard>& deck, const std::string& fileName) {
 
         deck.insert(deck.begin(), *card);
     }
+
+	if (lineNumber < 5) {
+		throw DeckFileInvalidSize();
+	}
+
 }
 
 Player* buildPlayer(const std::string &name, const std::string &className) {

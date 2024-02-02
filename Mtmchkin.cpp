@@ -150,25 +150,7 @@ void playCard(std::vector<BattleCard>& deck, Player& player) {
 	const BattleCard& card = deck.back();
     deck.pop_back();
     deck.insert(deck.begin(), card);
-	std::string cardType = card.getName();
-
-	if (cardType == "Treasure") {
-        player.updateCoins(Treasure::getCoins());
-	} else if (cardType == "Barfight") {
-        player.updateHealthPoints(Barfight::lifeLoss());
-	} else if (cardType == "Gremlin") {
-
-	} else if (cardType == "Dragon") {
-	
-	} else if (cardType == "Mana") {
-	
-	} else if (cardType == "Merchant") {
-
-	} else if (cardType == "Well") {
-
-	} else if (cardType == "Witch") {
-
-	}
+    card.applyEffect(player);
 }
 
 void Mtmchkin::playRound() {

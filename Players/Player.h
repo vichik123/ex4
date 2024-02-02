@@ -7,19 +7,20 @@
 #define PLAYER_H
 #define MAX_HP 100
 
-#include "Cards/EnemyCard.h"
+#include "../Cards/EnemyCard.h"
 
 class Player {
 
 protected:
     std::string name;
+    std::string className;
     int level;
     int force;
     int healthPoints;
     int coins;
 
 public:
-    explicit Player(std::string  name);
+    explicit Player(std::string name, std::string className);
 
     /**
      * Update the number of coins the player has.
@@ -44,7 +45,13 @@ public:
      */
     virtual int getAttackPower();
 
-    void fight(EnemyCard& card) {
+    std::string getClass();
+
+    const std::string &getName() const;
+
+    int getCoins() const;
+
+    void fight(const EnemyCard& card) {
         if (card.getForce() >= getAttackPower()) {
             updateHealthPoints(-card.getLoss());
         } else {

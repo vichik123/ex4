@@ -43,9 +43,8 @@ void buildDeck(const std::string &fileName) {
 			BattleCard* card = new Well();
 		} else if (cardName == "Witch") {
 			BattleCard* card = new Witch();
-		} else if (cardName == "EnemyCard") {
-			BattleCard* card = new EnemyCard();
-		}
+		}		
+
         this->m_deck.push_back(card);
     }
 }

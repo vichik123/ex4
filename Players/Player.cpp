@@ -32,3 +32,15 @@ const std::string &Player::getName() const {
 int Player::getCoins() const {
     return coins;
 }
+
+int Player::getLevel() const {
+    return level;
+}
+
+int Player::getForce() const {
+    return force;
+}
+
+int Player::getHP() const {
+    return healthPoints;
+}

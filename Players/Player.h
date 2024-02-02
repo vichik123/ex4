@@ -51,6 +51,12 @@ public:
 
     int getCoins() const;
 
+    int getLevel() const;
+
+    int getForce() const;
+
+    int getHP() const;
+
     void fight(const EnemyCard& card) {
         if (card.getForce() >= getAttackPower()) {
             updateHealthPoints(-card.getLoss());

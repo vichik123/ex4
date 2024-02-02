@@ -15,6 +15,7 @@
 #include "Players/Ninja.h"
 #include "Players/Healer.h"
 #include "Players/Warrior.h"
+#include "Exceptions.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -28,7 +29,7 @@
 
 void playCard(Player& player);
 
-void buildDeck(std::vector<BattleCard>& deck, const std::string& fileName) {
+void buildDeck(std::vector<BattleCard*>& deck, const std::string& fileName) {
 	std::ifstream file(fileName);
 	
     if (!file.is_open()) {
@@ -39,7 +40,7 @@ void buildDeck(std::vector<BattleCard>& deck, const std::string& fileName) {
 	int lineNumber = 0;
 	while (std::getline(file, cardName)) {
 		lineNumber++;
-        const BattleCard* card;
+        BattleCard* card;
 		if (cardName == "Barfight") {
 			card = new Barfight();
 		} else if (cardName == "Gremlin") {
@@ -60,7 +61,7 @@ void buildDeck(std::vector<BattleCard>& deck, const std::string& fileName) {
 			throw DeckFileFormatError(lineNumber);
 		}
 
-        deck.insert(deck.begin(), *card);
+        deck.insert(deck.begin(), card);
     }
 }
 
@@ -110,7 +111,7 @@ bool validName(const std::string& name) {
 	return true;
 }
 
-void getPlayer() {
+void getPlayer(std::vector<Player*>& players) {
 	std::string currentName;
 	std::string currentClass;
 	printInsertPlayerMessage();
@@ -128,7 +129,7 @@ void getPlayer() {
 		printInsertPlayerMessage();
 		std::cin >> currentName >> currentClass;
 	}
-	this->m_players.push_back(buildPlayer(currentName, currentClass));
+	players.insert(players.begin(), buildPlayer(currentName, currentClass));
 }
 
 Mtmchkin::Mtmchkin(const std::string &fileName) {
@@ -136,35 +137,34 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
 	buildDeck(this->m_deck, fileName);
 	} catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
-        return 1;
     }
 	
     printStartGameMessage();
 	this->m_playerCount = getNumberOfPlayers();
 	for (int i = 0; i < m_playerCount; i++) {
-		getPlayer();
+		getPlayer(this->m_players);
 	}
 }
 
-void playCard(std::vector<BattleCard>& deck, Player& player) {
-	const BattleCard& card = deck.back();
+void playCard(std::vector<BattleCard*>& deck, Player& player) {
+	BattleCard* card = deck.back();
     deck.pop_back();
     deck.insert(deck.begin(), card);
-    card.applyEffect(player);
+    card->applyEffect(player);
 }
 
 void Mtmchkin::playRound() {
 	printRoundStartMessage(this->m_roundCount);
-	for (const Player& player : this->m_players) {
-		printTurnStartMessage(player.getName());
+	for (Player* player : this->m_players) {
+		printTurnStartMessage(player->getName());
 		
-		playCard(this->m_deck, player);
+		playCard(this->m_deck, *player);
 
-		if (player.getLevel() == MAX_LEVEL) {
+		if (player->getLevel() == MAX_LEVEL) {
 			this->m_leaderboard.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
 			this->m_haveWon++;
 		}
-		if (player.getHP() == ZERO) {
+		if (player->getHP() == ZERO) {
 			this->m_leaderboard.insert(this->m_leaderboard.end() - this->m_haveLost, player);
 			this->m_haveLost++;
 		}
@@ -177,21 +177,21 @@ void Mtmchkin::playRound() {
 	this->m_roundCount++;
 }
 
-void insertAtIndex(std::vector<Player>& vec, const Player& player, int index) {
+void insertAtIndex(std::vector<Player*>& vec, Player* player, int index) {
     vec.insert(vec.begin() + index, player);
-	return;
 }
 
 void Mtmchkin::printLeaderBoard() const {
     printLeaderBoardStartMessage();
 	for (int i = 0; i < this->m_playerCount; i++) {
-		printPlayerLeaderBoard(i + 1, this->m_leaderboard[i]);
+        const Player* player = this->m_leaderboard[i];
+		printPlayerLeaderBoard(i + 1, *player);
 	}
 }
 
-bool isFinished(const Player &player) {
-	int hp = player.getHP();
-	int level = player.getLevel();
+bool isFinished(const Player* player) {
+	int hp = player->getHP();
+	int level = player->getLevel();
 	if (hp == ZERO || level == MAX_LEVEL){
 		return true;
 	}
@@ -199,7 +199,7 @@ bool isFinished(const Player &player) {
 }
 
 bool Mtmchkin::isGameOver() const {
-	for (const Player& player : this->m_players) {
+	for (const Player* player : this->m_players) {
 		if (!isFinished(player)) {
 			return false;
 		}

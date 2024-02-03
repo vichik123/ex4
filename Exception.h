@@ -1,10 +1,6 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
-#include <exception>
-#include <string>
-#include <stdexcept>
-
 class DeckFileNotFound : public std::exception {
     public:
         const char* what() const noexcept override {

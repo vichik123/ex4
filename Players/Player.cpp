@@ -2,7 +2,7 @@
 // Created by eitan on 1/29/2024.
 //
 #include "Player.h"
-#include "../Cards/EnemyCard.h"
+#include "../Cards/BattleCard.h"
 #include "../utilities.h"
 
 #include <utility>

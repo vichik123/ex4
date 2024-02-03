@@ -1,6 +1,4 @@
 #include "Card.h"
-#include "../Players/Player.h"
-#include <string>
 
 Card::Card(std::string name) : name(std::move(name)) {}
 

@@ -2,7 +2,6 @@
 #define MTMCHKIN_H_
 
 #include <vector>
-#include "Players/Player.h"
 #include "Cards/Card.h"
 
 enum class GameStatus {

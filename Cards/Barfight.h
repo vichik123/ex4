@@ -1,10 +1,7 @@
-#include <string>
-
 #ifndef BARFIGHT_H
 #define BARFIGHT_H
 
 #include "Card.h"
-#include "../Players/Player.h"
 
 class Barfight : public Card {
 

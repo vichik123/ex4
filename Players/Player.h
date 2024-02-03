@@ -4,7 +4,7 @@
 #define PLAYER_H
 #define MAX_HP 100
 
-class EnemyCard;
+class BattleCard;
 
 class Player {
 

@@ -1,3 +1,3 @@
 #include "Gremlin.h"
 
-Gremlin::Gremlin() : EnemyCard("Gremlin", 5, 2, 10) {}
+Gremlin::Gremlin() : BattleCard("Gremlin", 5, 2, 10) {}

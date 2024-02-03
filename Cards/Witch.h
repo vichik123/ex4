@@ -1,9 +1,9 @@
 #ifndef WITCH_H
 #define WITCH_H
 
-#include "EnemyCard.h"
+#include "BattleCard.h"
 
-class Witch : public EnemyCard {
+class Witch : public BattleCard {
 
 public:
     Witch();

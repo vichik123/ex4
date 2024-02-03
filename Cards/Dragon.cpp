@@ -1,3 +1,3 @@
 #include "Dragon.h"
 
-Dragon::Dragon() : EnemyCard("Dragon", 25, 1000, 100) {}
+Dragon::Dragon() : BattleCard("Dragon", 25, 1000, 100) {}

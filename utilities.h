@@ -1,11 +1,5 @@
-
 #ifndef CPP_UTIL_H
 #define CPP_UTIL_H
-
-#include <iostream>
-#include <cstring>
-#include <sstream>
-#include <functional>
 
 #include "Players/Player.h"
 
@@ -30,7 +24,7 @@
 void printPlayerDetails(std::ostream &os, const std::string &name, const std::string &job, int level, int force, int HP, int coins);
 
 /* ---------------------------------------------------------------------------------------------- */
-// ----------------------------        Print functions for EnemyCard class         --------------------------
+// ----------------------------        Print functions for BattleCard class         --------------------------
 
 /*
  * Prints the details of a general card:

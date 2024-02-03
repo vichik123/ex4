@@ -5,11 +5,9 @@
 #ifndef ENEMY_CARD_H
 #define ENEMY_CARD_H
 
-#include <utility>
-
 #include "Card.h"
 
-class EnemyCard : public Card {
+class BattleCard : public Card {
 
 protected:
     int force;
@@ -17,9 +15,9 @@ protected:
     int loss;
 
 public:
-    EnemyCard(std::string name, int force, int loot, int loss);
+    BattleCard(std::string name, int force, int loot, int loss);
 
-    ~EnemyCard() override = default;
+    ~BattleCard() override = default;
 
     void applyEffect(Player& player) override;
 
@@ -29,7 +27,7 @@ public:
 
     int getLoss() const;
 
-    friend std::ostream& operator<<(std::ostream& os, const EnemyCard& card);
+    friend std::ostream& operator<<(std::ostream& os, const BattleCard& card);
 };
 
 #endif //ENEMY_CARD_H

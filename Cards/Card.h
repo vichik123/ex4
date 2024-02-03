@@ -1,7 +1,7 @@
-#include <string>
 #ifndef BATTLE_CARD_H
 #define BATTLE_CARD_H
 #include "../Players/Player.h"
+#include <string>
 
 class Card {
 

@@ -1,8 +1,5 @@
-#include <string>
-
 #ifndef MERCHANT_CARD_H
 #define MERCHANT_CARD_H
-
 #include "Card.h"
 
 class Merchant : public Card {

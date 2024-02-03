@@ -1,10 +1,10 @@
-#include "EnemyCard.h"
+#include "BattleCard.h"
 #include "../utilities.h"
 
-EnemyCard::EnemyCard(std::string name, int force, int loot, int loss) :
+BattleCard::BattleCard(std::string name, int force, int loot, int loss) :
         Card(std::move(name)), force(force), loot(loot), loss(loss) {}
 
-void EnemyCard::applyEffect(Player &player) {
+void BattleCard::applyEffect(Player &player) {
     if (player.getAttackPower() >= force) {
         player.updateCoins(loot);
         player.winBattle();
@@ -16,19 +16,19 @@ void EnemyCard::applyEffect(Player &player) {
     }
 }
 
-int EnemyCard::getForce() const {
+int BattleCard::getForce() const {
     return force;
 }
 
-int EnemyCard::getLoot() const {
+int BattleCard::getLoot() const {
     return loot;
 }
 
-int EnemyCard::getLoss() const {
+int BattleCard::getLoss() const {
     return loss;
 }
 
-std::ostream &operator<<(std::ostream &os, const EnemyCard &card) {
+std::ostream &operator<<(std::ostream &os, const BattleCard &card) {
     printCardDetails(os, card.name);
     printMonsterDetails(os, card.force, card.loss, card.loot, card.name == "Dragon");
     return os;

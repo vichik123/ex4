@@ -1,3 +1,6 @@
+#ifndef EXCEPTION_H
+#define EXCEPTION_H
+
 #include <exception>
 #include <string>
 #include <stdexcept>
@@ -30,3 +33,5 @@ class DeckFileInvalidSize : public std::exception {
             return "Deck File Error: Deck size is invalid";
 		}
 	};
+
+#endif //EXCEPTION_H

@@ -1,5 +1,3 @@
-#include <string>
-
 #ifndef WELL_H
 #define WELL_H
 

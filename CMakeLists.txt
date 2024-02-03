@@ -12,7 +12,7 @@ add_executable(ex4
         Players/Ninja.h
         Players/Healer.h
         Players/Warrior.h
-        Cards/EnemyCard.h
+        Cards/BattleCard.h
         Cards/Gremlin.h
         Cards/Witch.h
         Cards/Dragon.h
@@ -22,7 +22,7 @@ add_executable(ex4
         Cards/Mana.h
         Cards/Card.h
         Cards/Merchant.h
-        Cards/EnemyCard.cpp
+        Cards/BattleCard.cpp
         Cards/Card.cpp
         Exception.h
         utilities.h

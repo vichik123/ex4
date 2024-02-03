@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_CXX_FLAGS "-Wall -pedantic-errors -Werror -DNDEBUG")
 
-add_executable(ex4 test.cpp
+add_executable(ex4
         Mtmchkin.cpp Mtmchkin.h
         Players/Player.h
         Players/Player.cpp

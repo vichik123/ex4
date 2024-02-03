@@ -1,7 +1,6 @@
 #include "Mtmchkin.h"
 #include "utilities.h"
 #include "Exception.h"
-#include "Players/Player.h"
 #include "Cards/Card.h"
 #include "Cards/Treasure.h"
 #include "Cards/Gremlin.h"
@@ -17,7 +16,6 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <algorithm>
 
 #define MAX_PLAYERS 6
 #define MIN_PLAYERS 2

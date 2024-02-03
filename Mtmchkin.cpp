@@ -143,7 +143,6 @@ void getInput(std::string& name, std::string& type) {
 
 void validityCheck(std::vector<std::string>& words, std::string& name, std::string& type) {
 	if (words.size() == 0) {
-		printInvalidName();
 		getInput(name, type);
 	} else if (words.size() == 1) {
 		if (!validName(name)) {
@@ -168,7 +167,6 @@ void validityCheck(std::vector<std::string>& words, std::string& name, std::stri
 		printInvalidInput();
         getInput(name, type);
     }
-	return;
 }
 
 void getPlayer(std::vector<Player*>& players) {

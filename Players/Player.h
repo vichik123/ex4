@@ -63,7 +63,7 @@ public:
 
     void loseBattle(bool died);
 
-	bool operator==(const Player& other) const;
+	friend bool operator==(const Player& one, const Player& other);
 
     friend std::ostream& operator<<(std::ostream& os, Player const& player);
 };

@@ -65,8 +65,8 @@ void Player::loseBattle(bool died) {
     }
 }
 
-bool operator==(const Player& other) {
-	return uniqueId == other.getUniqueId();
+bool operator==(const Player& one, const Player& other) {
+	return one.getUniqueId() == other.getUniqueId();
 }
 
 std::ostream& operator<<(std::ostream& os, Player const& player) {

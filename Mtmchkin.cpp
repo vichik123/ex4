@@ -168,7 +168,7 @@ void Mtmchkin::playRound() {
 			this->m_leaderboard.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
 			this->m_haveWon++;
 		}
-		if (player->getHP() == ZERO) {
+		if (player->getHP() <= ZERO) {
 			this->m_leaderboard.insert(this->m_leaderboard.end() - this->m_haveLost, player);
 			this->m_haveLost++;
 		}

@@ -24,7 +24,11 @@
 #define MAX_LEVEL 10
 #define ZERO 0
 #define MAX_NAME_LENGTH 15
+#define INVALID_NAME "3.14159"
+#define INVALID_CLASS "student"
 
+void validityCheck(std::vector<std::string>& words, std::string& name, std::string& type);
+bool isFinished(const Player* player);
 void buildDeck(std::vector<BattleCard*>& deck, const std::string& fileName) {
 	std::ifstream file(fileName);
 	
@@ -112,23 +116,77 @@ bool validName(const std::string& name) {
 	return true;
 }
 
-void getPlayer(std::vector<Player*>& players) {
-	std::string currentName;
-	std::string currentClass;
-	printInsertPlayerMessage();
-	std::cin >> currentName >> currentClass;
-	//if empty
-	//no measures were taken to prevent input under/above 2 words yet
-	while (!validName(currentName) || !validClass(currentClass)) {
-		if (!validName(currentName)){
+
+void getInput(std::string& name, std::string& type) {
+    std::string userInput;
+    std::getline(std::cin, userInput);
+
+    std::vector<std::string> words;
+    std::string currentWord;
+
+    for (char ch : userInput) {
+        if (ch == ' ' || ch == '\t') {
+            if (!currentWord.empty()) {
+                words.push_back(currentWord);
+                currentWord.clear();
+            }
+        } else {
+            currentWord.push_back(ch);
+        }
+    }
+    if (!currentWord.empty()) {
+        words.push_back(currentWord);
+    }
+	validityCheck(words, name, type);
+	return;
+}
+
+void validityCheck(std::vector<std::string>& words, std::string& name, std::string& type) {
+	if (words.size() == 0) {
+		printInvalidName();
+		getInput(name, type);
+	} else if (words.size() == 1) {
+		if (!validName(name)) {
 			printInvalidName();
-		}
-		if (!validClass(currentClass)){
+		} else {
 			printInvalidClass();
 		}
-		std::cin >> currentName >> currentClass;
-	}
-    players.push_back(buildPlayer(currentName, currentClass));
+		getInput(name, type);
+	} else if (words.size() == 2) {
+        name = words[0];
+        type = words[1];
+		if (!validName(name)) {
+			printInvalidName();
+			getInput(name, type);
+			return; //importent
+		}
+		if (!validClass(type)) {
+			printInvalidClass();
+			getInput(name, type);
+		}
+    } else {
+		printInvalidInput();
+        getInput(name, type);
+    }
+	return;
+}
+
+void getPlayer(std::vector<Player*>& players) {
+	std::string name = INVALID_NAME;
+	std::string type = INVALID_CLASS;
+	printInsertPlayerMessage();
+	getInput(name, type);
+
+//	while (!validName(currentName) || !validClass(currentClass)) {
+//		if (!validName(currentName)){
+//			printInvalidName();
+//		}
+//		if (!validClass(currentClass)){
+//			printInvalidClass();
+//		}
+//		getInput(currentName, currentClass);
+//	}
+    players.push_back(buildPlayer(name, type));
 }
 
 Mtmchkin::Mtmchkin(const std::string &fileName) {
@@ -202,6 +260,7 @@ bool isFinished(const Player* player) {
 	int hp = player->getHP();
 	int level = player->getLevel();
 	return (hp == ZERO || level == MAX_LEVEL);
+}
 
 bool Mtmchkin::isGameOver() const {
 //	for (const Player* player : this->m_players) {
@@ -210,7 +269,7 @@ bool Mtmchkin::isGameOver() const {
 //		}
 //	}
 //	return true;
-	return (this->m_haveWon + this->m_haveLost == this->m_players.size());
+	return (this->m_haveWon + this->m_haveLost == (int) this->m_players.size());
 }
 
 int Mtmchkin::getNumberOfRounds() const {

@@ -7,10 +7,10 @@
 
 #include <utility>
 
-int MyClass::nextId = 1;
+int Player::nextId = 1;
 
 Player::Player(std::string name, std::string className) :
-    name(std::move(name)), className(std::move(className)), level(1), force(5), healthPoints(MAX_HP), coins(10) uniqueId(nextId++) {}
+    name(std::move(name)), className(std::move(className)), level(1), force(5), healthPoints(MAX_HP), coins(10), uniqueId(nextId++) {}
 
 void Player::updateCoins(int amount) {
     coins += amount;
@@ -65,7 +65,7 @@ void Player::loseBattle(bool died) {
     }
 }
 
-bool operator==(const Player& other) const {
+bool operator==(const Player& other) {
 	return uniqueId == other.getUniqueId();
 }
 

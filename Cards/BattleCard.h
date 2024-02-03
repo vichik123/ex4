@@ -17,9 +17,7 @@ public:
 
     virtual void applyEffect(Player& player) = 0;
 
-    friend std::ostream& operator<<(std::ostream& os, BattleCard& card) {
-        return os << card.name;
-    }
+    friend std::ostream &operator<<(std::ostream &os, const BattleCard &card);
 };
 
 #endif //BATTLE_CARD_H

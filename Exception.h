@@ -8,12 +8,13 @@ class DeckFileNotFound : public std::exception {
         }
 	};
 
+static std::string retValue;
 class DeckFileFormatError : public std::exception {
 public:
     DeckFileFormatError(int lineNumber) : lineNumber(lineNumber) {}
 
     const char* what() const noexcept override {
-        static const std::string retValue = ("Deck File Error: File format error in line " + std::to_string(lineNumber));
+        retValue = ("Deck File Error: File format error in line " + std::to_string(lineNumber));
         return retValue.c_str();
     }
 

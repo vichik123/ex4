@@ -8,8 +8,6 @@ class Barfight : public Card {
 public:
     Barfight();
 
-    ~Barfight() override = default;
-
     void applyEffect(Player& player) override;
 };
 

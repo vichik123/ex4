@@ -83,10 +83,6 @@ int getNumberOfPlayers() {
     std::cin >> playerCount;
     while (playerCount < MIN_PLAYERS || playerCount > MAX_PLAYERS) {
 		printInvalidTeamSize();
-        //lines to clean buffer
-		//std::cin.clear();
-        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		
 		printEnterTeamSizeMessage();
         std::cin >> playerCount;
     }
@@ -170,15 +166,6 @@ void getPlayer(std::vector<Player*>& players) {
 	printInsertPlayerMessage();
 	getInput(name, type);
 
-//	while (!validName(currentName) || !validClass(currentClass)) {
-//		if (!validName(currentName)){
-//			printInvalidName();
-//		}
-//		if (!validClass(currentClass)){
-//			printInvalidClass();
-//		}
-//		getInput(currentName, currentClass);
-//	}
     players.push_back(buildPlayer(name, type));
 }
 
@@ -256,12 +243,6 @@ bool isFinished(const Player* player) {
 }
 
 bool Mtmchkin::isGameOver() const {
-//	for (const Player* player : this->m_players) {
-//		if (!isFinished(player)) {
-//			return false;
-//		}
-//	}
-//	return true;
 	return (this->m_haveWon + this->m_haveLost == (int) this->m_players.size());
 }
 

@@ -7,8 +7,6 @@ class Dragon : public BattleCard {
 
 public:
     Dragon();
-
-    ~Dragon() override = default;
 };
 
 #endif //DRAGON_H

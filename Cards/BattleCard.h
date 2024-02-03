@@ -17,8 +17,6 @@ protected:
 public:
     BattleCard(std::string name, int force, int loot, int loss);
 
-    ~BattleCard() override = default;
-
     void applyEffect(Player& player) override;
 
     int getForce() const;

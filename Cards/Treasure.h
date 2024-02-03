@@ -10,8 +10,6 @@ class Treasure : public Card {
 public:
     Treasure();
 
-    ~Treasure() override = default;
-
     void applyEffect(Player& player) override;
 };
 

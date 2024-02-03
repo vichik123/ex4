@@ -10,8 +10,6 @@ class Mana : public Card {
 public:
     Mana();
 
-    ~Mana() override = default;
-
     void applyEffect(Player& player) override;
 };
 

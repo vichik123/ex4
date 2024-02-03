@@ -2,7 +2,6 @@
 // Created by eitan on 1/29/2024.
 //
 #include "Player.h"
-#include "../Cards/BattleCard.h"
 #include "../utilities.h"
 
 #include <utility>
@@ -11,6 +10,8 @@ int Player::nextId = 1;
 
 Player::Player(std::string name, std::string className) :
     name(std::move(name)), className(std::move(className)), level(1), force(5), healthPoints(MAX_HP), coins(10), uniqueId(nextId++) {}
+
+Player::~Player() = default;
 
 void Player::updateCoins(int amount) {
     coins += amount;

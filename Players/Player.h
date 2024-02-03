@@ -21,6 +21,8 @@ protected:
 public:
     explicit Player(std::string name, std::string className);
 
+    virtual ~Player();
+
     /**
      * Update the number of coins the player has.
      *

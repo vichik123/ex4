@@ -8,6 +8,7 @@ int main() {
         while (!game.isGameOver() && game.getNumberOfRounds() < MAX_NUMBER_OF_ROUNDS) {
             game.playRound();
         }
+        game.printLeaderBoard();
     } catch (const DeckFileFormatError& e) {
         std::cout << e.what();
     } catch (const DeckFileInvalidSize& e) {

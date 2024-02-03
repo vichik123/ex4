@@ -38,4 +38,5 @@ add_executable(ex4 test.cpp
         Players/Ninja.cpp
         Players/Healer.cpp
         Players/Warrior.cpp
+        main.cpp
 )

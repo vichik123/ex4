@@ -144,6 +144,10 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
 	for (int i = 0; i < m_playerCount; i++) {
 		getPlayer(this->m_players);
 	}
+
+    for (Player *player: this->m_players) {
+        m_leaderboard.push_back(player);
+    }
 }
 
 void playCard(std::vector<BattleCard*>& deck, Player& player) {

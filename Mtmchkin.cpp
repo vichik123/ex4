@@ -117,7 +117,7 @@ void getPlayer(std::vector<Player*>& players) {
 	std::string currentClass;
 	printInsertPlayerMessage();
 	std::cin >> currentName >> currentClass;
-
+	//if empty
 	//no measures were taken to prevent input under/above 2 words yet
 	while (!validName(currentName) || !validClass(currentClass)) {
 		if (!validName(currentName)){
@@ -152,9 +152,10 @@ void playCard(std::vector<BattleCard*>& deck, Player& player) {
     card->applyEffect(player);
 }
 
-int playerIndex(std::vector<Player *> vec, const Player *player) {
+int playerIndex(std::vector<Player*> vec, const Player *player) {
     for (int i = 0; i < (int) vec.size(); i++) {
-        if (vec.at(i)->getName() == player->getName()) {
+        // if (vec.at(i)->getName() == player->getName()) {
+        if (vec.at(i) == player) { //dereference pointers here if doens't work
             return i;
         }
     }
@@ -164,7 +165,7 @@ int playerIndex(std::vector<Player *> vec, const Player *player) {
 void Mtmchkin::playRound() {
     printRoundStartMessage(this->m_roundCount + 1);
 	for (Player* player : this->m_players) {
-        if (player->getLevel() == MAX_LEVEL || player->getHP() <= 0) {
+        if (isFinished(player)) {
             continue;
         }
 
@@ -181,11 +182,10 @@ void Mtmchkin::playRound() {
             this->m_leaderboard.insert(this->m_leaderboard.end() - this->m_haveLost, player);
             this->m_haveLost++;
 		}
-		if (isGameOver()) {
-			printGameEndMessage();
-			//what now???
-			return;
-		}
+	}
+	if (isGameOver()) {
+		printGameEndMessage();
+		return;
 	}
 	this->m_roundCount++;
 }
@@ -201,19 +201,16 @@ void Mtmchkin::printLeaderBoard() const {
 bool isFinished(const Player* player) {
 	int hp = player->getHP();
 	int level = player->getLevel();
-	if (hp == ZERO || level == MAX_LEVEL){
-		return true;
-	}
-	return false;
-}
+	return (hp == ZERO || level == MAX_LEVEL);
 
 bool Mtmchkin::isGameOver() const {
-	for (const Player* player : this->m_players) {
-		if (!isFinished(player)) {
-			return false;
-		}
-	}
-	return true;
+//	for (const Player* player : this->m_players) {
+//		if (!isFinished(player)) {
+//			return false;
+//		}
+//	}
+//	return true;
+	return (this->m_haveWon + this->m_haveLost == this->m_players.size());
 }
 
 int Mtmchkin::getNumberOfRounds() const {

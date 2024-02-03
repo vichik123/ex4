@@ -18,6 +18,8 @@ protected:
     int force;
     int healthPoints;
     int coins;
+	static int nextId;
+	int uniqueId;
 
 public:
     explicit Player(std::string name, std::string className);
@@ -55,9 +57,13 @@ public:
 
     int getHP() const;
 
+	int getUniqueId() const;
+
     void winBattle();
 
     void loseBattle(bool died);
+
+	bool operator==(const Player& other) const;
 
     friend std::ostream& operator<<(std::ostream& os, Player const& player);
 };

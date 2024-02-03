@@ -3,6 +3,7 @@
 //
 #include "Player.h"
 #include "../Cards/EnemyCard.h"
+#include "../utilities.h"
 
 #include <utility>
 
@@ -15,6 +16,11 @@ void Player::updateCoins(int amount) {
 
 void Player::updateHealthPoints(int amount) {
     healthPoints += amount;
+    if (healthPoints < 0) {
+        healthPoints = 0;
+    } else if (healthPoints > 100) {
+        healthPoints = 100;
+    }
 }
 
 int Player::getAttackPower() {
@@ -37,18 +43,23 @@ int Player::getLevel() const {
     return level;
 }
 
-int Player::getForce() const {
-    return force;
-}
-
 int Player::getHP() const {
     return healthPoints;
 }
 
-void Player::fight(const EnemyCard& card) {
-    if (card.getForce() >= getAttackPower()) {
-        updateHealthPoints(-card.getLoss());
-    } else {
-        updateCoins(card.getLoot());
+void Player::winBattle() {
+    if (level < 10) {
+        this->level++;
     }
+}
+
+void Player::loseBattle(bool died) {
+    if (force > 0 && !died) {
+        this->force--;
+    }
+}
+
+std::ostream& operator<<(std::ostream& os, Player const& player) {
+    printPlayerDetails(os, player.name, player.className, player.level, player.force, player.healthPoints, player.coins);
+    return os;
 }

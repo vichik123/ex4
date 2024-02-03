@@ -24,8 +24,12 @@ public:
     void applyEffect(Player& player) override;
 
     int getForce() const;
+
     int getLoot() const;
+
     int getLoss() const;
+
+    friend std::ostream& operator<<(std::ostream& os, const EnemyCard& card);
 };
 
 #endif //ENEMY_CARD_H

@@ -7,6 +7,6 @@ void Barfight::applyEffect(Player &player) {
     bool isWarrior = player.getClass() == "Warrior";
     printBarfightMessage(isWarrior);
     if (!isWarrior) {
-        player.updateHealthPoints(-8);
+        player.updateHealthPoints(-10);
     }
 }

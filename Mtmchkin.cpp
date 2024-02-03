@@ -17,6 +17,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 #define MAX_PLAYERS 6
 #define MIN_PLAYERS 2
@@ -116,6 +117,7 @@ void getPlayer(std::vector<Player*>& players) {
 	std::string currentClass;
 	printInsertPlayerMessage();
 	std::cin >> currentName >> currentClass;
+
 	//no measures were taken to prevent input under/above 2 words yet
 	while (!validName(currentName) || !validClass(currentClass)) {
 		if (!validName(currentName)){
@@ -124,21 +126,14 @@ void getPlayer(std::vector<Player*>& players) {
 		if (!validClass(currentClass)){
 			printInvalidClass();
 		}
-//		std::cin.clear();
-//        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		printInsertPlayerMessage();
 		std::cin >> currentName >> currentClass;
 	}
-	players.insert(players.begin(), buildPlayer(currentName, currentClass));
+    players.push_back(buildPlayer(currentName, currentClass));
 }
 
 Mtmchkin::Mtmchkin(const std::string &fileName) {
-	try {
-	buildDeck(this->m_deck, fileName);
-	} catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-    }
-	
+    buildDeck(this->m_deck, fileName);
+
     printStartGameMessage();
 	this->m_playerCount = getNumberOfPlayers();
 	for (int i = 0; i < m_playerCount; i++) {
@@ -157,20 +152,34 @@ void playCard(std::vector<BattleCard*>& deck, Player& player) {
     card->applyEffect(player);
 }
 
+int playerIndex(std::vector<Player *> vec, const Player *player) {
+    for (int i = 0; i < (int) vec.size(); i++) {
+        if (vec.at(i)->getName() == player->getName()) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 void Mtmchkin::playRound() {
-	printRoundStartMessage(this->m_roundCount);
+    printRoundStartMessage(this->m_roundCount + 1);
 	for (Player* player : this->m_players) {
-		printTurnStartMessage(player->getName());
-		
-		playCard(this->m_deck, *player);
+        if (player->getLevel() == MAX_LEVEL || player->getHP() <= 0) {
+            continue;
+        }
+
+        printTurnStartMessage(player->getName());
+        playCard(this->m_deck, *player);
 
 		if (player->getLevel() == MAX_LEVEL) {
-			this->m_leaderboard.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
-			this->m_haveWon++;
-		}
-		if (player->getHP() <= ZERO) {
-			this->m_leaderboard.insert(this->m_leaderboard.end() - this->m_haveLost, player);
-			this->m_haveLost++;
+            this->m_leaderboard.erase(this->m_leaderboard.begin() + playerIndex(this->m_leaderboard, player));
+            this->m_leaderboard.insert(this->m_leaderboard.begin() + this->m_haveWon, player);
+            this->m_haveWon++;
+        }
+        if (player->getHP() <= ZERO) {
+            this->m_leaderboard.erase(this->m_leaderboard.begin() + playerIndex(this->m_leaderboard, player));
+            this->m_leaderboard.insert(this->m_leaderboard.end() - this->m_haveLost, player);
+            this->m_haveLost++;
 		}
 		if (isGameOver()) {
 			printGameEndMessage();
@@ -179,10 +188,6 @@ void Mtmchkin::playRound() {
 		}
 	}
 	this->m_roundCount++;
-}
-
-void insertAtIndex(std::vector<Player*>& vec, Player* player, int index) {
-    vec.insert(vec.begin() + index, player);
 }
 
 void Mtmchkin::printLeaderBoard() const {

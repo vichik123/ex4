@@ -12,9 +12,9 @@ public:
 
     void updateHealthPoints(int amount) override {
         if (amount > 0) {
-            healthPoints += amount * 2;
+            Player::updateHealthPoints(2 * amount);
         } else {
-            healthPoints += amount;
+            Player::updateHealthPoints(amount);
         }
     }
 

@@ -53,15 +53,13 @@ public:
 
     int getLevel() const;
 
-    int getForce() const;
-
     int getHP() const;
 
-    void fight(const EnemyCard& card);
+    void winBattle();
 
-    friend std::ostream& operator<<(std::ostream& os, Player const& player) {
-        return os << player.name;
-    }
+    void loseBattle(bool died);
+
+    friend std::ostream& operator<<(std::ostream& os, Player const& player);
 };
 
 #endif //PLAYER_H

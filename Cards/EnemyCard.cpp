@@ -5,13 +5,14 @@ EnemyCard::EnemyCard(std::string name, int force, int loot, int loss) :
         BattleCard(std::move(name)), force(force), loot(loot), loss(loss) {}
 
 void EnemyCard::applyEffect(Player &player) {
-    printCardDetails(std::cout, this->name);
-    printMonsterDetails(std::cout, force, loss, loot, loot == 1000);
-    printEndOfCardDetails(std::cout);
     if (player.getAttackPower() >= force) {
         player.updateCoins(loot);
+        player.winBattle();
+        printWinBattle(player.getName(), this->getName());
     } else {
         player.updateHealthPoints(-loss);
+        player.loseBattle(player.getHP() < 1);
+        printLossBattle(player.getName(), this->getName());
     }
 }
 
@@ -25,4 +26,10 @@ int EnemyCard::getLoot() const {
 
 int EnemyCard::getLoss() const {
     return loss;
+}
+
+std::ostream &operator<<(std::ostream &os, const EnemyCard &card) {
+    printCardDetails(os, card.name);
+    printMonsterDetails(os, card.force, card.loss, card.loot, card.name == "Dragon");
+    return os;
 }

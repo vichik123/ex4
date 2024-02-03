@@ -32,7 +32,7 @@ add_executable(ex4 test.cpp
         Cards/Merchant.cpp
         Cards/Well.cpp
         Cards/Mana.cpp
-        Cards/Gremllin.cpp
+        Cards/Gremlin.cpp
         Cards/Dragon.cpp
         Cards/Witch.cpp
         Players/Ninja.cpp

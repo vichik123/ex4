@@ -1,7 +1,7 @@
 #include "Well.h"
 #include "../utilities.h"
 
-Well::Well() : BattleCard("Well") {}
+Well::Well() : Card("Well") {}
 
 void Well::applyEffect(Player &player)  {
     bool isNinja = player.getClass() == "Ninja";

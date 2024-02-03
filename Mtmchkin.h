@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "Players/Player.h"
-#include "Cards/BattleCard.h"
+#include "Cards/Card.h"
 
 enum class GameStatus {
     Win, Loss, MidGame
@@ -59,7 +59,7 @@ private:
 	int m_playerCount;
     std::vector<Player*> m_players;
 	std::vector<Player*> m_leaderboard;
-    std::vector<BattleCard*> m_deck;
+    std::vector<Card*> m_deck;
     GameStatus m_status;
 	int m_haveWon = 0;
 	int m_haveLost = 0;

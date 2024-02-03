@@ -3,9 +3,9 @@
 #ifndef MERCHANT_CARD_H
 #define MERCHANT_CARD_H
 
-#include "BattleCard.h"
+#include "Card.h"
 
-class Merchant : public BattleCard {
+class Merchant : public Card {
 
 public:
     Merchant();

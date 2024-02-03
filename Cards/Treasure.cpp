@@ -1,7 +1,7 @@
 #include "Treasure.h"
 #include "../utilities.h"
 
-Treasure::Treasure() : BattleCard("Treasure") {}
+Treasure::Treasure() : Card("Treasure") {}
 
 void Treasure::applyEffect(Player &player) {
     printTreasureMessage();

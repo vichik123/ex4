@@ -20,10 +20,10 @@ add_executable(ex4 test.cpp
         Cards/Well.h
         Cards/Barfight.h
         Cards/Mana.h
-        Cards/BattleCard.h
+        Cards/Card.h
         Cards/Merchant.h
         Cards/EnemyCard.cpp
-        Cards/BattleCard.cpp
+        Cards/Card.cpp
         Exception.h
         utilities.h
         utilities.cpp

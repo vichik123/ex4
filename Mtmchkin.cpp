@@ -2,7 +2,7 @@
 #include "utilities.h"
 #include "Exception.h"
 #include "Players/Player.h"
-#include "Cards/BattleCard.h"
+#include "Cards/Card.h"
 #include "Cards/Treasure.h"
 #include "Cards/Gremlin.h"
 #include "Cards/Dragon.h"
@@ -29,7 +29,7 @@
 
 void validityCheck(std::vector<std::string>& words, std::string& name, std::string& type);
 bool isFinished(const Player* player);
-void buildDeck(std::vector<BattleCard*>& deck, const std::string& fileName) {
+void buildDeck(std::vector<Card*>& deck, const std::string& fileName) {
 	std::ifstream file(fileName);
 	
     if (!file.is_open()) {
@@ -40,7 +40,7 @@ void buildDeck(std::vector<BattleCard*>& deck, const std::string& fileName) {
 	int lineNumber = 0;
 	while (std::getline(file, cardName)) {
 		lineNumber++;
-        BattleCard* card;
+        Card* card;
 		if (cardName == "Barfight") {
 			card = new Barfight();
 		} else if (cardName == "Gremlin") {
@@ -201,8 +201,8 @@ Mtmchkin::Mtmchkin(const std::string &fileName) {
     }
 }
 
-void playCard(std::vector<BattleCard*>& deck, Player& player) {
-	BattleCard* card = deck.back();
+void playCard(std::vector<Card*>& deck, Player& player) {
+	Card* card = deck.back();
     deck.pop_back();
     deck.insert(deck.begin(), card);
     card->applyEffect(player);

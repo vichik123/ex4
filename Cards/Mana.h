@@ -3,9 +3,9 @@
 #ifndef MANA_H
 #define MANA_H
 
-#include "BattleCard.h"
+#include "Card.h"
 
-class Mana : public BattleCard {
+class Mana : public Card {
 
 public:
     Mana();

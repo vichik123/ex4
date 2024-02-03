@@ -2,7 +2,7 @@
 #include "../utilities.h"
 
 EnemyCard::EnemyCard(std::string name, int force, int loot, int loss) :
-        BattleCard(std::move(name)), force(force), loot(loot), loss(loss) {}
+        Card(std::move(name)), force(force), loot(loot), loss(loss) {}
 
 void EnemyCard::applyEffect(Player &player) {
     if (player.getAttackPower() >= force) {

@@ -1,7 +1,7 @@
 #include "Mana.h"
 #include "../utilities.h"
 
-Mana::Mana() : BattleCard("Mana") {}
+Mana::Mana() : Card("Mana") {}
 
 void Mana::applyEffect(Player &player) {
     bool isHealer = player.getClass() == "Healer";

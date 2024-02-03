@@ -3,10 +3,10 @@
 #ifndef BARFIGHT_H
 #define BARFIGHT_H
 
-#include "BattleCard.h"
+#include "Card.h"
 #include "../Players/Player.h"
 
-class Barfight : public BattleCard {
+class Barfight : public Card {
 
 public:
     Barfight();

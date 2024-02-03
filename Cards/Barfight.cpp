@@ -1,7 +1,7 @@
 #include "Barfight.h"
 #include "../utilities.h"
 
-Barfight::Barfight() : BattleCard("Barfight") {}
+Barfight::Barfight() : Card("Barfight") {}
 
 void Barfight::applyEffect(Player &player) {
     bool isWarrior = player.getClass() == "Warrior";

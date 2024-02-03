@@ -3,9 +3,9 @@
 #ifndef WELL_H
 #define WELL_H
 
-#include "BattleCard.h"
+#include "Card.h"
 
-class Well : public BattleCard {
+class Well : public Card {
 
 public:
     Well();

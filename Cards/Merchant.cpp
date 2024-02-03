@@ -1,7 +1,7 @@
 #include "Merchant.h"
 #include "../utilities.h"
 
-Merchant::Merchant() : BattleCard("Merchant") {}
+Merchant::Merchant() : Card("Merchant") {}
 
 void Merchant::applyEffect(Player &player)  {
     printMerchantInitialMessageForInteractiveEncounter(

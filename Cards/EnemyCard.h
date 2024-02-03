@@ -7,9 +7,9 @@
 
 #include <utility>
 
-#include "BattleCard.h"
+#include "Card.h"
 
-class EnemyCard : public BattleCard {
+class EnemyCard : public Card {
 
 protected:
     int force;

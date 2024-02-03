@@ -1,7 +1,6 @@
-// Mtmchkin.cpp
-
 #include "Mtmchkin.h"
 #include "utilities.h"
+#include "Exception.h"
 #include "Players/Player.h"
 #include "Cards/BattleCard.h"
 #include "Cards/Treasure.h"
@@ -15,19 +14,15 @@
 #include "Players/Ninja.h"
 #include "Players/Healer.h"
 #include "Players/Warrior.h"
-#include "Exceptions.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <limits>
 
 #define MAX_PLAYERS 6
 #define MIN_PLAYERS 2
 #define MAX_LEVEL 10
 #define ZERO 0
 #define MAX_NAME_LENGTH 15
-
-void playCard(Player& player);
 
 void buildDeck(std::vector<BattleCard*>& deck, const std::string& fileName) {
 	std::ifstream file(fileName);
@@ -71,14 +66,14 @@ void buildDeck(std::vector<BattleCard*>& deck, const std::string& fileName) {
 }
 
 Player* buildPlayer(const std::string &name, const std::string &className) {
-    Player* player;
+    Player *player = nullptr;
 	if (className == "Ninja") {
 		player = new Ninja(name);
 	} else if (className == "Healer") {
 		player = new Healer(name);
 	} else if (className == "Warrior") {
 		player = new Warrior(name);
-	}
+    }
 	return player;
 }
 

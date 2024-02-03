@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Players/Player.h"
+#include "Cards/BattleCard.h"
 
 enum class GameStatus {
     Win, Loss, MidGame

@@ -13,6 +13,4 @@ public:
     Dragon();
 };
 
-Dragon::Dragon() : EnemyCard("Dragon", 25, 1000, 100) {}
-
 #endif //DRAGON_H

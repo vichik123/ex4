@@ -1,9 +1,5 @@
 #include <string>
 
-//
-// Created by eitan on 1/29/2024.
-//
-
 #ifndef MANA_H
 #define MANA_H
 
@@ -14,15 +10,7 @@ class Mana : public BattleCard {
 public:
     Mana();
 
-    void applyEffect(Player& player) override {
-        bool isHealer = player.getClass() == "Healer";
-        printManaMessage(isHealer);
-        if (isHealer) {
-            player.updateHealthPoints(10);
-        }
-    }
+    void applyEffect(Player& player) override;
 };
-
-Mana::Mana() : BattleCard("Mana") {}
 
 #endif //MANA_H

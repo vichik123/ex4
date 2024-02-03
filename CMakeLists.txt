@@ -24,4 +24,18 @@ add_executable(ex4 test.cpp
         Cards/Merchant.h
         Cards/EnemyCard.cpp
         Cards/BattleCard.cpp
-        utilities.cpp)
+        Exception.h
+        utilities.h
+        utilities.cpp
+        Cards/Barfight.cpp
+        Cards/Treasure.cpp
+        Cards/Merchant.cpp
+        Cards/Well.cpp
+        Cards/Mana.cpp
+        Cards/Gremllin.cpp
+        Cards/Dragon.cpp
+        Cards/Witch.cpp
+        Players/Ninja.cpp
+        Players/Healer.cpp
+        Players/Warrior.cpp
+)

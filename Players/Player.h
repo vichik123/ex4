@@ -7,7 +7,7 @@
 #define PLAYER_H
 #define MAX_HP 100
 
-#include "../Cards/EnemyCard.h"
+class EnemyCard;
 
 class Player {
 
@@ -57,13 +57,7 @@ public:
 
     int getHP() const;
 
-    void fight(const EnemyCard& card) {
-        if (card.getForce() >= getAttackPower()) {
-            updateHealthPoints(-card.getLoss());
-        } else {
-            updateCoins(card.getLoot());
-        }
-    }
+    void fight(const EnemyCard& card);
 
     friend std::ostream& operator<<(std::ostream& os, Player const& player) {
         return os << player.name;

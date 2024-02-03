@@ -44,3 +44,11 @@ int Player::getForce() const {
 int Player::getHP() const {
     return healthPoints;
 }
+
+void Player::fight(const EnemyCard& card) {
+    if (card.getForce() >= getAttackPower()) {
+        updateHealthPoints(-card.getLoss());
+    } else {
+        updateCoins(card.getLoot());
+    }
+}

@@ -1,11 +1,9 @@
 #include <utility>
 
-//
-// Created by eitan on 1/29/2024.
-//
-
 #ifndef HEALER_H
 #define HEALER_H
+
+#include "Player.h"
 
 class Healer : public Player {
 
@@ -21,7 +19,5 @@ public:
     }
 
 };
-
-Healer::Healer(std::string name) : Player(std::move(name)) {}
 
 #endif //HEALER_H

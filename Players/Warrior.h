@@ -19,6 +19,4 @@ public:
     }
 };
 
-Warrior::Warrior(std::string name) : Player(std::move(name)) {}
-
 #endif //WARRIOR_H

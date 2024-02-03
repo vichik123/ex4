@@ -20,11 +20,10 @@
 #include "Players/Warrior.h"
 #include "Exception.h"
 #include <algorithm>
-#include <sstream>
-#include <random>
 #include <cstdio>
 #include <fstream>
 #include <cstring>
+#include <sstream>
 
 using std::unique_ptr;
 using std::cout;

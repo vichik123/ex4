@@ -1,5 +1,5 @@
 #include <exception>
-#include <string>   
+#include <string>
 #include <stdexcept>
 
 class DeckFileNotFound : public std::exception {
@@ -24,7 +24,7 @@ private:
 
 
 
-class InvalidArgument : public std::exception {
+class DeckFileInvalidSize : public std::exception {
     public:
         const char* what() const noexcept override {
             return "Deck File Error: Deck size is invalid";

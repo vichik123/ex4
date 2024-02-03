@@ -1,9 +1,5 @@
 #include <string>
 
-//
-// Created by eitan on 1/29/2024.
-//
-
 #ifndef TREASURE_H
 #define TREASURE_H
 
@@ -14,12 +10,7 @@ class Treasure : public BattleCard {
 public:
     Treasure();
 
-    void applyEffect(Player& player) override {
-        printTreasureMessage();
-        player.updateCoins(10);
-    }
+    void applyEffect(Player& player) override;
 };
-
-Treasure::Treasure() : BattleCard("Treasure") {}
 
 #endif //TREASURE_H

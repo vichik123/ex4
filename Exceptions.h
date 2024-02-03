@@ -14,7 +14,8 @@ public:
     DeckFileFormatError(int lineNumber) : lineNumber(lineNumber) {}
 
     const char* what() const noexcept override {
-        return ("Deck File Error: File format error in line " + std::to_string(lineNumber)).c_str();
+        static const std::string retValue = ("Deck File Error: File format error in line " + std::to_string(lineNumber));
+        return retValue.c_str();
     }
 
 private:

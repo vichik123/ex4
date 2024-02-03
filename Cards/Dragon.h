@@ -11,6 +11,8 @@ class Dragon : public EnemyCard {
 
 public:
     Dragon();
+
+    ~Dragon() override = default;
 };
 
 #endif //DRAGON_H

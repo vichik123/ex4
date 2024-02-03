@@ -10,6 +10,8 @@ class Well : public BattleCard {
 public:
     Well();
 
+    ~Well() override = default;
+
     void applyEffect(Player& player) override;
 };
 

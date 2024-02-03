@@ -19,6 +19,8 @@ protected:
 public:
     EnemyCard(std::string name, int force, int loot, int loss);
 
+    ~EnemyCard() override = default;
+
     void applyEffect(Player& player) override;
 
     int getForce() const;

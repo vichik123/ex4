@@ -7,6 +7,8 @@ class Witch : public EnemyCard {
 
 public:
     Witch();
+
+    ~Witch() override = default;
 };
 
 #endif //WITCH_H

@@ -10,6 +10,8 @@ class Mana : public BattleCard {
 public:
     Mana();
 
+    ~Mana() override = default;
+
     void applyEffect(Player& player) override;
 };
 

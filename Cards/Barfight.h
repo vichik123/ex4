@@ -11,6 +11,8 @@ class Barfight : public BattleCard {
 public:
     Barfight();
 
+    ~Barfight() override = default;
+
     void applyEffect(Player& player) override;
 };
 

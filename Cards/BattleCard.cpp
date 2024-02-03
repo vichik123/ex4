@@ -4,6 +4,8 @@
 
 BattleCard::BattleCard(std::string name) : name(std::move(name)) {}
 
+BattleCard::~BattleCard() = default;
+
 std::string BattleCard::getName() const {
     return name;
 }

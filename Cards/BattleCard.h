@@ -11,6 +11,8 @@ protected:
 public:
     explicit BattleCard(std::string name);
 
+    virtual ~BattleCard();
+
 	std::string getName() const;
 
     virtual void applyEffect(Player& player) = 0;

@@ -7,6 +7,8 @@ class Gremlin : public EnemyCard {
 
 public:
     Gremlin();
+
+    ~Gremlin() override = default;
 };
 
 #endif //GREMLIN_H

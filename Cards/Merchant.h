@@ -10,6 +10,8 @@ class Merchant : public BattleCard {
 public:
     Merchant();
 
+    ~Merchant() override = default;
+
     void applyEffect(Player& player) override;
 };
 
